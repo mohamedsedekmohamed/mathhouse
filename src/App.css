@@ -1,0 +1,37 @@
+/* تخصيص القوائم المنسدلة */
+.custom-select {
+  appearance: none; /* إزالة التنسيق الافتراضي للمتصفح */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  position: relative;
+}
+
+/* تخصيص القائمة المنسدلة عند الفتح على الشاشات الصغيرة */
+@media (max-width: 640px) {
+  .custom-select {
+    max-width: 100%; /* التأكد من أن العرض لا يتجاوز الحاوية */
+    font-size: 14px; /* حجم خط مناسب للشاشات الصغيرة */
+  }
+
+  /* تحسين القائمة المنسدلة عند الفتح */
+  select.custom-select option {
+    font-size: 14px; /* حجم خط الخيارات */
+    padding: 10px; /* تباعد داخلي للخيارات */
+  }
+
+  /* إضافة أيقونة مخصصة للقائمة المنسدلة */
+  .custom-select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='currentColor'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: left 10px center; /* ضبط موقع الأيقونة */
+    background-size: 20px;
+    padding-left: 35px; /* إفساح المجال للأيقونة */
+  }
+}
+
+/* تحسين القوائم على الشاشات الكبيرة */
+@media (min-width: 641px) {
+  .custom-select {
+    max-width: 400px; /* عرض أقصى للقوائم على الشاشات الكبيرة */
+  }
+}
