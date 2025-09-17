@@ -26,6 +26,38 @@ const [dataex, setDataex] = useState([]);
       setOpenModal(false);
       window.location.href = targetLink;
     };
+const [pagenumber,setpagenumber]=useState(1)
+const [totalPages, setTotalPages] = useState(6500);
+useEffect(() => {
+  if (!selectedCategory) return; // ما يشتغل إلا لما تختار
+
+  const payload = {
+    category_id: selectedCategory,
+    course_id: selectedCourse,
+    code_id: selectedExam,
+    year: selectedYear,
+    month: selectedMonth,
+    per_page: "9",
+    page: pagenumber,
+  };
+
+  const filteredPayload = Object.fromEntries(
+    Object.entries(payload).filter(([_, value]) => value !== "" && value !== null && value !== undefined)
+  );
+
+  setLoading(true);
+  axios.post("https://login.mathshouse.net/api/question/filter", filteredPayload)
+   .then((response) => {
+             setDataex(response.data.questions);
+             if(response.data.questions.length === 0) {
+               toast.info("No questions found for the selected criteria.");
+             }else{
+               toast.success("Data sent successfully!");
+             }
+             setLoading(false);
+      })
+    .catch(() => setLoading(false));
+}, [pagenumber]); // <-- ركز هنا
 
   useEffect(() => {
     if (dataex && dataex.length > 0 && sectionRef.current) {
@@ -176,6 +208,9 @@ const payload = {
   code_id: selectedExam,
   year: selectedYear,
   month: selectedMonth,
+      per_page:"9",
+      page:pagenumber
+
 };
 
 const filteredPayload = Object.fromEntries(
@@ -260,8 +295,36 @@ setLoading(true)
     </div>
   </a>
 ))}
+
 </div>
 </div>
+{dataex&&dataex.length>0&&(
+  <div className="flex justify-center  items-center mt-6 gap-2">
+  <button
+    disabled={pagenumber === 1}
+    onClick={() => setpagenumber((prev) => prev - 1)}
+    className={`px-4 py-2 rounded-lg border ${
+      pagenumber === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white hover:bg-gray-100"
+    }`}
+  >
+    Prev
+  </button>
+
+  <span className="px-4 py-2 font-medium text-one">
+    Page {pagenumber} of {totalPages}
+  </span>
+
+  <button
+    disabled={pagenumber === totalPages}
+    onClick={() => setpagenumber((prev) => prev + 1)}
+    className={`px-4 py-2 rounded-lg border ${
+      pagenumber === totalPages ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white hover:bg-gray-100"
+    }`}
+  >
+    Next
+  </button>
+</div>
+)}
    {openModal && (
         <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-lg p-6 max-w-sm w-full">
