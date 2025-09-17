@@ -16,6 +16,16 @@ const Questions = () => {
   const [loading, setLoading] = useState(false);
 const [dataex, setDataex] = useState([]);
   const sectionRef = useRef(null);
+  const [openModal, setOpenModal] = useState(false);
+    const [targetLink, setTargetLink] = useState("");
+     const handleClick = (id) => {
+      setTargetLink(`https://login.mathshouse.net/my_login/questions/${id}`);
+      setOpenModal(true);
+    };
+    const confirmGo = () => {
+      setOpenModal(false);
+      window.location.href = targetLink;
+    };
 
   useEffect(() => {
     if (dataex && dataex.length > 0 && sectionRef.current) {
@@ -221,11 +231,11 @@ setLoading(true)
  <div   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2">
 
     {dataex && dataex.length > 0 && dataex.map((exam) => (
-  <a
+   <a
   data-aos="flip-up"
     key={exam.id}
-    href={`https://login.mathshouse.net/login/questions/${exam.id}`}
-    className="block cursor-pointer border w-60 lg:w-100 border-gray-200 rounded-2xl p-6 bg-white shadow-md hover:shadow-xl hover:bg-gray-50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 max-w-sm mx-auto sm:max-w-md"
+        onClick={()=>handleClick(exam.id)}
+    className="block cursor-pointer w-60 lg:w-100 border border-gray-200 rounded-2xl p-6 bg-white shadow-md hover:shadow-xl hover:bg-gray-50 transition-all duration-300 ease-in-out transform hover:-translate-y-1 max-w-sm mx-auto sm:max-w-md"
   >
     <div className="flex items-center space-x-3 mb-3">
       <FaFileAlt className="text-one text-2xl" /> {/* إضافة الأيقونة */}
@@ -252,7 +262,29 @@ setLoading(true)
 ))}
 </div>
 </div>
-  
+   {openModal && (
+        <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-2xl shadow-lg p-6 max-w-sm w-full">
+            <h2 className="text-lg font-semibold text-gray-800 mb-4">
+Confiem             </h2>
+            <p className="text-gray-600 mb-6">
+Start Question ?            </p>
+            <div className="flex justify-end gap-3">
+              <button
+                onClick={() => setOpenModal(false)}
+                className="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100"
+              >
+                No
+              </button>
+              <button
+                onClick={confirmGo}
+                className="px-4 py-2 rounded-lg bg-one text-white hover:bg-one/80"
+              >
+Yes              </button>
+            </div>
+          </div>
+        </div>
+      )}
 </div>
 
 
