@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { FaFolderOpen, FaBookOpen, FaListUl, FaRegFileAlt } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+import piccourse from "../../assets/OIP.webp"
 const Courses = () => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
@@ -66,7 +66,7 @@ category
 
   <img
     alt="expand knowledge"
-    src="https://images.unsplash.com/photo-1464582883107-8adf2dca8a9f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+    src={piccourse}
     className="h-56 w-full object-cover sm:h-full"
     data-aos="fade-left"
     data-aos-duration="1000"

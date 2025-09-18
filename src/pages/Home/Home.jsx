@@ -373,8 +373,7 @@ const data = [
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black">
               Browse Our
               <strong className="text-one"> Top </strong>
-              Courses
-            </h1>
+Category            </h1>
             <p className="mt-4 text-gray-700 text-sm sm:text-base lg:text-lg">
               Discover expertly crafted courses to elevate your skills
             </p>

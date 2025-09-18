@@ -2,7 +2,7 @@ import React, { useEffect, useState ,useRef } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import think from "../../assets/think.png";
+import think from "../../assets/ex.webp";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaFileAlt } from 'react-icons/fa';

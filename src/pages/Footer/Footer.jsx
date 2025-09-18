@@ -10,6 +10,7 @@ import {
   FaGooglePlay,
 } from "react-icons/fa";
 import math1 from "../../assets/mathlogo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   useEffect(() => {
@@ -57,12 +58,12 @@ const Footer = () => {
   ].map(
               (item, idx) => (
                 <li key={idx}>
-                  <a
-                    href={item}
+                  <Link
+                    to={item.path}
                     className="hover:text-one hover:pl-1 transition block"
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </li>
               )
             )}

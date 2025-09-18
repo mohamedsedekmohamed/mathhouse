@@ -2,7 +2,7 @@ import React, { useEffect, useState ,useRef } from "react";
 import axios from "axios";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import think from "../../assets/qa.png";
+import think from "../../assets/qu.webp";
 import { FaFileAlt } from 'react-icons/fa';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -49,10 +49,9 @@ useEffect(() => {
   axios.post("https://login.mathshouse.net/api/question/filter", filteredPayload)
    .then((response) => {
              setDataex(response.data.questions);
+             setTotalPages(response.data.total_pages)
              if(response.data.questions.length === 0) {
                toast.info("No questions found for the selected criteria.");
-             }else{
-               toast.success("Data sent successfully!");
              }
              setLoading(false);
       })
@@ -220,6 +219,8 @@ setLoading(true)
     axios.post("https://login.mathshouse.net/api/question/filter", filteredPayload)
        .then((response) => {
              setDataex(response.data.questions);
+                          setTotalPages(response.data.total_pages)
+        
              if(response.data.questions.length === 0) {
                toast.info("No questions found for the selected criteria.");
              }else{
@@ -298,33 +299,58 @@ setLoading(true)
 
 </div>
 </div>
-{dataex&&dataex.length>0&&(
-  <div className="flex justify-center  items-center mt-6 gap-2">
-  <button
-    disabled={pagenumber === 1}
-    onClick={() => setpagenumber((prev) => prev - 1)}
-    className={`px-4 py-2 rounded-lg border ${
-      pagenumber === 1 ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white hover:bg-gray-100"
-    }`}
-  >
-    Prev
-  </button>
+{dataex && dataex.length > 0 && (
+  <div className="flex justify-center flex-wrap items-center mt-6 gap-2">
+    {/* Prev Button */}
+    <button
+      disabled={pagenumber === 1}
+      onClick={() => setpagenumber((prev) => prev - 1)}
+      className={`px-4 py-2 rounded-lg border ${
+        pagenumber === 1
+          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+          : "bg-white hover:bg-gray-100"
+      }`}
+    >
+      Prev
+    </button>
 
-  <span className="px-4 py-2 font-medium text-one">
-    Page {pagenumber} of {totalPages}
-  </span>
+    {/* Page Info */}
+    <span className="px-2 py-2 font-medium text-one">
+      Page {pagenumber} of {totalPages}
+    </span>
 
-  <button
-    disabled={pagenumber === totalPages}
-    onClick={() => setpagenumber((prev) => prev + 1)}
-    className={`px-4 py-2 rounded-lg border ${
-      pagenumber === totalPages ? "bg-gray-200 text-gray-400 cursor-not-allowed" : "bg-white hover:bg-gray-100"
-    }`}
-  >
-    Next
-  </button>
-</div>
+    {/* Input for custom page */}
+    <input
+      type="number"
+      min="1"
+      max={totalPages}
+      placeholder="Go to..."
+      className="w-20 px-2 py-1 border rounded-lg text-center"
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          const page = Number(e.target.value);
+          if (page >= 1 && page <= totalPages) {
+            setpagenumber(page);
+          }
+        }
+      }}
+    />
+
+    {/* Next Button */}
+    <button
+      disabled={pagenumber === totalPages}
+      onClick={() => setpagenumber((prev) => prev + 1)}
+      className={`px-4 py-2 rounded-lg border ${
+        pagenumber === totalPages
+          ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+          : "bg-white hover:bg-gray-100"
+      }`}
+    >
+      Next
+    </button>
+  </div>
 )}
+
    {openModal && (
         <div className="fixed inset-0 bg-black/50 bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-2xl shadow-lg p-6 max-w-sm w-full">
