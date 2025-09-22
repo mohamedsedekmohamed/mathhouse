@@ -96,13 +96,8 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
         {isOpen && (
-          <div className=" absolute z-200 w-[80%] right-0 md:hidden bg-white shadow-lg py-4 px-5 space-y-3"
-style={{
-  backgroundImage: `url(${math1})`,
-  backgroundSize: "contain",
-  backgroundRepeat: "no-repeat",
-  backgroundPosition: "center"
-}}
+          <div className=" absolute h- z-200 w-[80%] right-0 md:hidden bg-white shadow-lg py-4 px-5 space-y-3"
+
           >
             {navLinks.map((link, index) => (
               <Link

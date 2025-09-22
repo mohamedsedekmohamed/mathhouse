@@ -5,18 +5,25 @@ import { FaFolderOpen, FaBookOpen, FaListUl, FaRegFileAlt } from "react-icons/fa
 import AOS from "aos";
 import "aos/dist/aos.css";
 import piccourse from "../../assets/OIP.webp"
+import { TfiReload } from "react-icons/tfi";
+
 const Courses = () => {
   const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
+  
   const [courses, setCourses] = useState([]);
   useEffect(() => {
     AOS.init({ duration: 800, once: true });
+    setLoading(true)
     axios
       .get("https://login.mathshouse.net/api/courses_lists")
       .then((response) => {
         setCourses(response.data.categories);
+        setLoading(false)
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
+        setLoading(false)
       });
   }, []);
 
@@ -85,7 +92,10 @@ category
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 ">
+{
+  loading?(   <div className="flex items-center justify-center min-h-screen bg-gray-50">
+            <TfiReload className="animate-spin text-6xl text-one" />
+          </div>):(    <div className="grid gap-6 sm:grid-cols-2 ">
           {courses.map((cat, index) => (
             <div
               key={cat.id}
@@ -123,7 +133,10 @@ category
               </div>
             </div>
           ))}
-        </div>
+        </div>)
+}
+    
+
       </section>
     </section>
   );
