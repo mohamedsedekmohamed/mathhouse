@@ -180,7 +180,7 @@ Select   Chapters    </a>
         href="https://login.mathshouse.net/login"
         className=" p-1 m-1 border border-white rounded-4xl underline text-one font-medium hover:bg-gray-100 transition mt-2"
       >
-Buy It    </a>
+Buy Now    </a>
                         </span>
                         {openChapter === chapter.id ? (
                           <FiChevronUp className="w-5 h-5 text-indigo-500" />

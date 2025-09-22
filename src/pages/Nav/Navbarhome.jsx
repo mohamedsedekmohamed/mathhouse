@@ -116,7 +116,7 @@ const Navbar = () => {
             ${
               isActive(link.path)
                 ? "text-one after:w-full"
-                : "text-gray-700 hover:text-one after:w-0 hover:after:w-full"
+                : "text-white hover:text-one after:w-0 hover:after:w-full"
             }
             after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:bg-one after:rounded after:transition-all after:duration-300
           `}
@@ -127,7 +127,7 @@ const Navbar = () => {
 
       <a
         href="https://login.mathshouse.net/login"
-        className="block w-full px-4 py-2 border border-one rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
+        className="block w-full px-4 py-2 border border-white rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
       >
         Log in
       </a>

@@ -47,7 +47,7 @@ function App() {
 </a> */}
 
 <a href="https://wa.me/201234567890" target="_blank" rel="noopener noreferrer">
-  <FaWhatsapp className="text-one w-12 h-12 md:w-18 md:h-18  hover:text-green-500 transition" />
+  <FaWhatsapp className="text-green-500 w-12 h-12 md:w-18 md:h-18  hover:text-green-500 transition" />
 </a>
 
 {/* <a href="https://www.youtube.com/@MathsHouse244/shorts" target="_blank" rel="noopener noreferrer">

@@ -190,9 +190,14 @@ const Footer = () => {
             )
           )}
         </div>
+        <div className="flex justify-around px-2 items-center text-one">
+          <a className="my-2 underline text-gray-500 hover:text-one" href="https://login.mathshouse.net/privacy">Privacy and Policy</a>
+          
         <p className="text-xs text-gray-500">
           © 2025. All Rights Reserved.
         </p>
+          </div>
+        
       </div>
     </footer>
   );

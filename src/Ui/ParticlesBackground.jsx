@@ -14,7 +14,7 @@ export default function ParticlesBackground() {
           line_linked: {
             enable: true,
             distance: 150,
-            color: "#BB2D3B",
+            color: "#fff",
             opacity: 0.4,
             width: 1
           },
@@ -35,5 +35,5 @@ export default function ParticlesBackground() {
     }
   }, []);
 
-  return <div id="particles-js"       className="absolute inset-0 w-full h-full bg-white"></div>;
+  return <div id="particles-js"       className="absolute inset-0 w-full h-full bg-black opacity-80"></div>;
 }
