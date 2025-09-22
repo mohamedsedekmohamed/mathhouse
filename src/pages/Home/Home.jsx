@@ -14,14 +14,25 @@ import {
   FaRegFileAlt,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { TfiReload } from "react-icons/tfi";
+
 import { useNavigate } from "react-router-dom";
 const Home = () => {
   const [courses, setCourses] = useState([]);
+  const [box, setBox] = useState("");
   useEffect(() => {
     axios
       .get("https://login.mathshouse.net/api/courses_lists")
       .then((response) => {
         setCourses(response.data.categories);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+    axios
+      .get("https://login.mathshouse.net/home_data")
+      .then((response) => {
+        setBox(response.data);
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -166,10 +177,11 @@ const Home = () => {
     },
   ];
   const items = [
-    { name: "Creative Events", price: "76" },
-    { name: "Skilled Tutor", price: "140" },
-    { name: "Online Courses", price: "80" },
-    { name: "People Wordwide", price: "99K" },
+    { name: "Courses", price: box.courses},
+    { name: "Chapters", price:  box.chapters },
+    { name: "Lessons", price:  box.lessons },
+    { name: "Students ", price:  box.students },
+    { name: "Teachers ", price: box.teachers },
   ];
 const data = [
   {
@@ -248,7 +260,7 @@ const data = [
   return (
     <div>
       {/* Hero Section */}
-      <div className="relative w-full min-h-screen bg-cover bg-center bg-white">
+      <div className="relative w-full max-h-screen bg-cover bg-center bg-white">
         <section className="pt-5 md:pt-28">
           <div className="mx-auto max-w-screen-xl px-4 py-10 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-center">
@@ -353,11 +365,11 @@ const data = [
         </div>
       </div>
       {/*  */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 p-6">
+      <div className=" flex flex-wrap justify-center gap-6 p-6">
         {items.map((item, index) => (
           <div
             key={index}
-            className="bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center hover:scale-105 hover:shadow-2xl transition duration-500"
+            className="bg-white/80 rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center hover:scale-105 hover:shadow-2xl transition duration-500 w-100"
             data-aos={index % 2 === 0 ? "fade-up" : "zoom-in"}
             data-aos-delay={index * 150} // يخليهم ييجوا ورا بعض
           >

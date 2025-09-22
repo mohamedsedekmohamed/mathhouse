@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { FiChevronDown, FiChevronUp, FiBookOpen, FiX } from "react-icons/fi";
+import { TfiReload } from "react-icons/tfi";
 
 const Category = () => {
   const { id } = useParams();
@@ -32,9 +33,9 @@ const Category = () => {
 
   if (!category) {
     return (
-      <div className="flex justify-center items-center text-xl font-semibold">
-        Loading...
-      </div>
+      <div className="flex items-center justify-center min-h-screen bg-gray-50">
+               <TfiReload className="animate-spin text-6xl text-one" />
+             </div>
     );
   }
 
@@ -131,9 +132,22 @@ const Category = () => {
                 {selectedCourse.course_name}
               </h2>
               <p className="text-gray-600">{selectedCourse.course_description}</p>
+              <div className="flex gap-10">
+                  <a
+        href="https://login.mathshouse.net/login"
+        className="block w-full px-4 py-2 border border-one rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
+      >
+Buy ALL Courses      </a>
+        <a
+        href="https://login.mathshouse.net/login"
+        className="block w-full px-4 py-2 border border-one rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
+      >
+Select   Chapters    </a>
+              </div>
               <span className="inline-block bg-indigo-100 text-one text-sm font-medium px-3 py-1 rounded-full">
                 ${selectedCourse.price}
               </span>
+              
 
               {/* Chapters */}
               <div className="mt-4 space-y-2">
@@ -162,6 +176,11 @@ const Category = () => {
                           <span className="text-sm text-one">
                             (${chapter.chapter_price})
                           </span>
+                              <a
+        href="https://login.mathshouse.net/login"
+        className=" p-1 m-1 border border-white rounded-4xl underline text-one font-medium hover:bg-gray-100 transition mt-2"
+      >
+Buy It    </a>
                         </span>
                         {openChapter === chapter.id ? (
                           <FiChevronUp className="w-5 h-5 text-indigo-500" />
