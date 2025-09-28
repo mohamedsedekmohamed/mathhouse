@@ -2,7 +2,6 @@ import { useEffect } from "react";
 
 export default function ParticlesBackground() {
   useEffect(() => {
-    // نتأكد أن المكتبة اتعمل لها load
     if (window.particlesJS) {
       window.particlesJS("particles-js", {
         particles: {
