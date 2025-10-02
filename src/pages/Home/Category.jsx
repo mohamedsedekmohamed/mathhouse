@@ -150,7 +150,7 @@ Select   Chapters    </a>
               
 
               {/* Chapters */}
-              <div className="mt-4 space-y-2">
+              <div className="mt-4 space-y-2"> 
                 <h4 className="font-semibold text-gray-700 flex items-center gap-2">
                   <FiBookOpen className="w-5 h-5 text-one" />
                   Chapters ({selectedCourse.chapters_count})
