@@ -134,12 +134,12 @@ const Category = () => {
               <p className="text-gray-600">{selectedCourse.course_description}</p>
               <div className="flex gap-10">
                   <a
-        href={`https://login.mathshouse.net/Course/${selectedCourse.id}`}
+        href={`https://login.mathshouse.net/my_login/course/${selectedCourse.id}`}
         className="block w-full px-4 py-2 border border-one rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
       >
 Buy ALL Courses      </a>
         <a
-        href={`https://login.mathshouse.net/Course/${selectedCourse.id}`}
+        href={`https://login.mathshouse.net/my_login/course/${selectedCourse.id}`}
         className="block w-full px-4 py-2 border border-one rounded-md text-one font-medium hover:bg-gray-100 transition mt-2"
       >
 Select   Chapters    </a>
@@ -177,7 +177,7 @@ Select   Chapters    </a>
                             (${chapter.chapter_price})
                           </span>
                               <a
-        href={`https://login.mathshouse.net/Course/${selectedCourse.id}`}
+        href={`https://login.mathshouse.net/my_login/course/${selectedCourse.id}`}
         className=" p-1 m-1 border border-white rounded-4xl underline text-one font-medium hover:bg-gray-100 transition mt-2"
       >
 Buy Now    </a>

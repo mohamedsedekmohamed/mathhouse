@@ -5,6 +5,7 @@ import math1 from "../../assets/op.svg";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import ParticlesBackground from ".././../Ui/ParticlesBackground";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,14 +36,12 @@ const Navbar = () => {
     <nav className="shadow-md sticky top-0 z-50 " data-aos="fade-down">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
-          {/* Logo */}
           <div data-aos="fade-right">
             <Link to="/">
               <img src={math1} alt="Logo" className="  w-28  sm:w-36 md:w-40 lg:48 pt-2  h-20 sm:h-24 md:h-28 lg:h-32  " />
             </Link>
           </div>
 
-          {/* Desktop Links */}
           <div className="hidden md:flex flex-1 px-2 justify-center space-x-6 lg:space-x-10">
             {navLinks.map((link, index) => (
               <Link
@@ -81,16 +80,36 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <div className="md:hidden" data-aos="fade-left">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="text-gray-700 focus:outline-none"
-            >
-              {isOpen ? (
-                <HiX size={28} className="text-one" />
-              ) : (
-                <HiMenu size={28} className="text-one" />
-              )}
-            </button>
+
+<button
+  onClick={() => setIsOpen(!isOpen)}
+  className="text-gray-700 focus:outline-none"
+>
+  <AnimatePresence mode="wait" initial={false}>
+    {isOpen ? (
+      <motion.div
+        key="close"
+        initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
+        animate={{ opacity: 1, rotate: 0, scale: 1 }}
+        exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <HiX size={28} className="text-one" />
+      </motion.div>
+    ) : (
+      <motion.div
+        key="menu"
+        initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
+        animate={{ opacity: 1, rotate: 0, scale: 1 }}
+        exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
+        transition={{ duration: 0.3 }}
+      >
+        <HiMenu size={28} className="text-one" />
+      </motion.div>
+    )}
+  </AnimatePresence>
+</button>
+
           </div>
         </div>
       </div>
