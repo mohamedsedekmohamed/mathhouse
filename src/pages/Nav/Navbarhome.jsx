@@ -14,10 +14,10 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Systems", path: "/systems" },
-    { name: "Diagnostic", path: "https://login.mathshouse.net/login" },
+    { name: "Diagnostic", path: "https://login.mathshouse.net/DiaExam" },
     { name: "Exams", path: "/exams" },
     { name: "Questions", path: "/questions" },
-    { name: "Live", path: "https://login.mathshouse.net/login" },
+    { name: "Live", path: "https://login.mathshouse.net/my_login/live/my" },
     { name: "About ", path: "/About" },
     { name: "Contact us ", path: "/ContactUs" },
   ];
