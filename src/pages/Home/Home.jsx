@@ -278,8 +278,8 @@ const data = [
                   Connect With The Most Qualified And Passionate Mentors
                 </p>
 
-                <button className="px-6 py-3 bg-one text-white rounded-lg shadow-lg font-medium hover:bg-red-700 transition duration-300">
-                  Find Courses
+                <button onClick={()=>navigate("/systems")} className="px-6 py-3 bg-one text-white rounded-lg shadow-lg font-medium hover:bg-red-700 transition duration-300">
+                  Find Systems
                 </button>
               </div>
 

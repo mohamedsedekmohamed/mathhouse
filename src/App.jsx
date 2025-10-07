@@ -28,7 +28,7 @@ function App() {
     <Navbarhome />
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/Courses" element={<Courses />} />
+      <Route path="/systems" element={<Courses />} />
       <Route path="/category/:id" element={<Category />} />
       <Route path="/About" element={<About />} />
       <Route path="/ContactUs" element={<Contect />} />
@@ -46,7 +46,7 @@ function App() {
   <FaFacebookSquare className="text-one w-7 h-7 md:w-10 md:h-10  hover:text-blue-600 transition" />
 </a> */}
 
-<a href="https://wa.me/201234567890" target="_blank" rel="noopener noreferrer">
+<a href="https://wa.me/01005203244" target="_blank" rel="noopener noreferrer">
   <FaWhatsapp className="text-green-500 w-12 h-12 md:w-18 md:h-18  hover:text-green-500 transition" />
 </a>
 

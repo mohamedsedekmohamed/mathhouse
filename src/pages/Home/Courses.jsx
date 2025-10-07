@@ -65,7 +65,7 @@ const Courses = () => {
   }
   className="inline-block rounded-sm bg-one px-12 py-3 text-sm font-medium text-white transition hover:bg-one/75 focus:ring-3 focus:ring-yellow-400 focus:outline-hidden"
 >
-category
+Systems
 </button>
       </div>
     </div>
@@ -84,7 +84,7 @@ category
         {/* Title */}
         <div className="mx-auto max-w-prose text-center mb-10" data-aos="fade-up">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-black">
-            <strong className="text-one"> category
+            <strong className="text-one"> Systems
  </strong>
           </h1>
           <p className="mt-3 text-gray-600 text-sm sm:text-base lg:text-lg">
