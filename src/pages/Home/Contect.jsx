@@ -4,10 +4,10 @@ import "aos/dist/aos.css";
 
 const Contect = () => {
   const [form, setForm] = useState({
-    name: "",
+    title: "",
     email: "",
-    subject: "",
-    message: "",
+    phone: "",
+    description: "",
   });
 
   const [status, setStatus] = useState(null);
@@ -25,7 +25,7 @@ const Contect = () => {
     setStatus("sending");
 
     try {
-      const res = await fetch("http://localhost:5000/send-email", {
+      const res = await fetch("https://login.mathshouse.net/api/send_email", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
@@ -33,12 +33,11 @@ const Contect = () => {
 
       if (res.ok) {
         setStatus("success");
-        setForm({ name: "", email: "", subject: "", message: "" });
+        setForm({ title: "", email: "", phone: "", description: "" });
       } else {
         setStatus("error");
       }
     } catch (err) {
-      console.error(err);
       setStatus("error");
     }
   };
@@ -47,11 +46,7 @@ const Contect = () => {
     <div className="min-h-screen bg-gray-100 flex items-center justify-center p-6">
       <div className="w-full max-w-6xl bg-white rounded-2xl shadow-lg overflow-hidden grid grid-cols-1 md:grid-cols-2">
         
-        {/* Left Side: Image */}
-        <div
-          className="relative"
-          data-aos="fade-right"
-        >
+        <div className="relative" data-aos="fade-right">
           <img
             src="https://images.unsplash.com/photo-1492724441997-5dc865305da7?auto=format&fit=crop&w=900&q=80"
             alt="Contact"
@@ -62,11 +57,7 @@ const Contect = () => {
           </div>
         </div>
 
-        {/* Right Side: Form */}
-        <div
-          className="p-8 sm:p-12 flex flex-col justify-center"
-          data-aos="fade-left"
-        >
+        <div className="p-8 sm:p-12 flex flex-col justify-center" data-aos="fade-left">
           <h2 className="text-2xl font-bold mb-4 text-center md:text-left">Contact Us</h2>
           <p className="text-gray-600 mb-6 text-center md:text-left">
             Fill in the form below and we’ll get back to you as soon as possible.
@@ -75,9 +66,9 @@ const Contect = () => {
           <form onSubmit={handleSubmit} className="space-y-4">
             <input
               type="text"
-              name="name"
+              name="title"
               placeholder="Your Name"
-              value={form.name}
+              value={form.title}
               onChange={handleChange}
               required
               className="w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500"
@@ -93,16 +84,16 @@ const Contect = () => {
             />
             <input
               type="text"
-              name="subject"
-              placeholder="Subject"
-              value={form.subject}
+              name="phone" 
+              placeholder="Phone"
+              value={form.phone}
               onChange={handleChange}
               className="w-full border rounded-md p-3 focus:ring-2 focus:ring-blue-500"
             />
             <textarea
-              name="message"
-              placeholder="Your Message"
-              value={form.message}
+              name="description"
+              placeholder="Your Description"
+              value={form.description}
               onChange={handleChange}
               required
               rows="5"

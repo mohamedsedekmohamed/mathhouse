@@ -14,7 +14,7 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "Systems", path: "/systems" },
-    { name: "Diagnostic", path: "https://login.mathshouse.net/DiaExam" },
+    { name: "Diagnostic", path: "http://diagnoistic.mathshouse.net/" },
     { name: "Exams", path: "/exams" },
     { name: "Questions", path: "/questions" },
     { name: "Live", path: "https://login.mathshouse.net/my_login/live/my" },
